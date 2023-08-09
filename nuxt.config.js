@@ -4,7 +4,7 @@ export default {
 
   // githubpagesのための設定
   router: {
-    base: '/MabatakiNews/dist/' // リポジトリ名に合わせて変更
+    base: '/MabatakiNews/' // リポジトリ名に合わせて変更
   },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
