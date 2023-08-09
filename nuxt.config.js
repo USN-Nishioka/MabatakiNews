@@ -2,6 +2,11 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  // githubpagesのための設定
+  router: {
+    base: '/MabatakiNews/' // リポジトリ名に合わせて変更
+  },
+
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'MabatakiNews',
