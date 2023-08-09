@@ -7,6 +7,7 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
+    "deploy": "nuxt generate && push-dir --dir=dist --branch=gh-pages --remote=deploy --cleanup",
     "lint:js": "eslint --ext \".js,.vue\" --ignore-path .gitignore .",
     "lint": "npm run lint:js",
     "lintfix": "npm run lint:js -- --fix"
@@ -27,6 +28,7 @@
     "eslint": "^8.24.0",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-vue": "^9.5.1",
-    "postcss": "^8.4.17"
+    "postcss": "^8.4.17",
+    "push-dir": "^0.4.1"
   }
 }
