@@ -50,8 +50,6 @@ export default {
   name: 'NuxtTutorial',
 
   created() {
-    console.log('fire');
-    console.log('hogehoge');
   }
-}
+};
 </script>

@@ -1,31 +1,40 @@
 <template>
-  <div class="bg-gray-100 min-h-screen">
-    <div class="max-w-5xl mx-auto p-8">
-      <!-- ニュース情報の表示 -->
-      <div class="rounded-lg shadow-lg bg-white p-6 mb-8">
-        <h1 class="text-3xl font-bold mb-4">
+  <div class="bg-gray-100 min-h-screen h-full">
+    <div class="h-full relative">
+      <!-- ニュースの画像 -->
+      <img :src="news.image" alt="news.image" class="absolute inset-0 w-full h-full object-cover">
+
+      <!-- オーバーレイ情報 -->
+      <div class="absolute inset-0 p-6 flex flex-col justify-between bg-black bg-opacity-30">
+        <!-- タイトル -->
+        <h1 class="text-3xl font-bold text-white mb-4">
           {{ news.title }}
         </h1>
-        <img :src="news.image" alt="news.image" class="w-full rounded-lg mb-4">
-        <div class="text-sm mb-2">
-          <span class="font-semibold">Source:</span> {{ news.source }} |
-          <span class="font-semibold">Author:</span> {{ news.author }} |
-          <span class="font-semibold">Date:</span> {{ news.published_at }}
+
+        <!-- フラッシュの表示 -->
+        <div class="p-6 mb-8">
+          <span class="block text-center text-white text-5xl mb-4">{{ currentFlash }}</span>
         </div>
-        <p class="text-gray-700 mb-4">
-          {{ news.description }}
-        </p>
-        <a :href="news.url" class="text-blue-500 hover:text-blue-700 hover:underline">{{ news.url }}</a>
+
+        <!-- 説明, URL, ソース, 作者, 日付 -->
+        <div>
+          <p class="text-white mb-4">
+            {{ news.description }}
+          </p>
+          <span class="font-semibold text-white">Link:</span> <a :href="news.url" class="text-blue-500 hover:text-blue-700 underline mb-4">{{ news.url }}</a>
+          <div class="text-sm mb-2">
+            <span class="font-semibold text-white">Source:</span> {{ news.source }} |
+            <span class="font-semibold text-white">Author:</span> {{ news.author }} |
+            <span class="font-semibold text-white">Date:</span> {{ news.published_at }}
+          </div>
+        </div>
       </div>
-      <!-- フラッシュの表示 -->
-      <div class="rounded-lg shadow-lg bg-white p-6 mb-8">
-        <span class="block text-center text-blue-800 text-2xl mb-4">{{ currentFlash }}</span>
-      </div>
-      <!-- フラッシュ表示速度調整 -->
-      <div class="rounded-lg shadow-lg bg-white p-6 flex items-center justify-between">
-        <span class="text-gray-700">Flash Speed: {{ speed }}</span>
-        <input v-model="speed" class="w-1/2 ml-4" type="range" min="0" max="1000" @input="updateSpeed">
-      </div>
+    </div>
+
+    <!-- フラッシュ表示速度調整 -->
+    <div class="rounded-lg shadow-lg bg-white p-6 flex items-center justify-between absolute bottom-0 w-full">
+      <span class="text-gray-700">Flash Speed: {{ speed }}</span>
+      <input v-model="speed" class="w-1/2 ml-4" type="range" min="0" max="1000" @input="updateSpeed">
     </div>
   </div>
 </template>
