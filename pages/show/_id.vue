@@ -1,56 +1,48 @@
 <template>
   <div class="flex flex-col justify-center items-center min-h-screen">
-    <span class="text-center text-blue-800 text-2xl mb-4">{{ currentFlash }}</span>
-    <input v-model="speed" class="w-1/2" type="range" min="0" max="1000" @input="updateSpeed">
-    <span class="text-center mb-4">{{ speed }}</span>
+    <div>
+      <!--ニュース情報の表示-->
+      {{ news.title }}<br>
+      {{ news.source }}<br>
+      {{ news.author }}<br>
+      {{ news.published_at }}<br>
+      {{ news.description }}<br>
+      <a :href="news.url">{{ news.url }}</a><br>
+      <img :src="news.image" alt="news.image"><br>
+    </div>
+    <div>
+      <!-- フラッシュの表示 -->
+      <span class="text-center text-blue-800 text-2xl mb-4">{{ currentFlash }}</span>
+    </div>
+    <div>
+      <!-- フラッシュ表示速度調整 -->
+      <input v-model="speed" class="w-1/2" type="range" min="0" max="1000" @input="updateSpeed">
+      <span class="text-center mb-4">{{ speed }}</span>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ShowFlash',
+  name: 'ShowNews',
 
   data() {
     return {
       currentIndex: 0, // 現在表示しているインデックス
       speed: 300, // レンジスライダーの値
 
+      // ニュース情報
       news: {
-        flash: [
-          '新経済国家',
-          'エリオディアは、',
-          '本日、',
-          '新たなデジタル通貨',
-          '「エリオコイン」',
-          'を発表しました。',
-          'この通貨は、',
-          'エリオディア',
-          '中央銀行が',
-          '監督し、',
-          '国内の',
-          'デジタル取引の',
-          '安定を',
-          '保証するもので、',
-          '地域経済の',
-          '活性化が',
-          '期待されます。',
-          'エリオコインの',
-          '発表により、',
-          'エリオディアの',
-          '証券市場は',
-          '一時5%',
-          '上昇しましたが、',
-          'その後は',
-          '安定しました。',
-          '専門家は、',
-          'エリオコインが',
-          '地域通貨としての',
-          '地位を築くため、',
-          '今後',
-          '数か月間の',
-          '市場動向に',
-          '注目しています。'
-        ]
+        id: null,
+        source: null,
+        author: null,
+        title: null,
+        description: null,
+        url: null,
+        image: null,
+        content: null,
+        flash: [],
+        published_at: null
       }
     };
   },
@@ -63,6 +55,14 @@ export default {
 
   mounted() {
     this.updateSpeed(); // ここで初期インターバルをセット
+
+    // ニュースを取得
+    this.$axios.get(`http://127.0.0.1:8000/get_news/${this.$route.params.id}`).then((res) => {
+      this.news = res.data;
+    }).catch((err) => {
+      console.error(err);
+      alert('Failed to retrieve the data');
+    });
   },
 
   beforeDestroy() {
