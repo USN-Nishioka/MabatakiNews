@@ -20,6 +20,8 @@ module.exports = {
     'space-before-function-paren': ['error', 'never'], // 関数名と()の間にスペースを入れない
     'no-trailing-spaces': ['error', { skipBlankLines: true }], // 空行のスペースを許容する
     'vue/max-attributes-per-line': 'off', // 1行あたり文字数制限の無効化
-    "no-console": "off"
+    'no-console': 'off',
+    'vue/require-default-prop': 'off',
+    'vue/require-prop-types': 'off'
   }
 }

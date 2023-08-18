@@ -18,25 +18,24 @@
             <span class="block text-center text-white text-5xl mb-4">{{ currentFlash }}</span>
           </div>
 
-          <!-- 説明, URL, ソース, 作者, 日付 -->
+          <!-- フラッシュ速度, 説明, URL, ソース, 作者, 日付 -->
           <div>
+            <!--
             <p class="text-white mb-4">
               {{ news.description }}
             </p>
+            -->
             <span class="font-semibold text-white">Link:</span> <a :href="news.url" class="text-blue-500 hover:text-blue-700 underline mb-4">{{ news.url }}</a>
             <div class="text-sm mb-2">
               <span class="font-semibold text-white">Source:</span> {{ news.source }} |
               <span class="font-semibold text-white">Author:</span> {{ news.author }} |
               <span class="font-semibold text-white">Date:</span> {{ news.published_at }}
             </div>
+            <div>
+              <input v-model="speed" class="w-1/2 ml-0" type="range" min="0" max="1000" @input="updateSpeed">
+            </div>
           </div>
         </div>
-      </div>
-
-      <!-- フラッシュ表示速度調整 -->
-      <div class="rounded-lg shadow-lg bg-white p-6 flex items-center justify-between">
-        <span class="text-gray-700">Flash Speed: {{ speed }}</span>
-        <input v-model="speed" class="w-1/2 ml-4" type="range" min="0" max="1000" @input="updateSpeed">
       </div>
     </div>
   </div>
