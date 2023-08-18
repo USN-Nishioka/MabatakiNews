@@ -1,42 +1,24 @@
 <template>
-  <div class="bg-gray-100 min-h-screen">
-    <div class="max-w-5xl mx-auto p-8">
-      <!-- ニュース情報の表示 -->
-      <div class="relative rounded-lg shadow-lg mb-8 overflow-hidden">
-        <!-- ニュースの画像 -->
-        <img :src="news.image" alt="news.image" class="w-full">
-
-        <!-- オーバーレイ情報 -->
-        <div class="absolute inset-0 p-6 flex flex-col justify-between bg-black bg-opacity-30">
-          <!-- タイトル -->
-          <h1 class="text-3xl font-bold text-white mb-4">
-            {{ news.title }}
-          </h1>
-
-          <!-- フラッシュの表示 -->
-          <div class="p-6 mb-8">
-            <span class="block text-center text-white text-5xl mb-4">{{ currentFlash }}</span>
-          </div>
-
-          <!-- フラッシュ速度, 説明, URL, ソース, 作者, 日付 -->
-          <div>
-            <!--
-            <p class="text-white mb-4">
-              {{ news.description }}
-            </p>
-            -->
-            <span class="font-semibold text-white">Link:</span> <a :href="news.url" class="text-blue-500 hover:text-blue-700 underline mb-4">{{ news.url }}</a>
-            <div class="text-sm mb-2">
-              <span class="font-semibold text-white">Source:</span> {{ news.source }} |
-              <span class="font-semibold text-white">Author:</span> {{ news.author }} |
-              <span class="font-semibold text-white">Date:</span> {{ news.published_at }}
-            </div>
-            <div>
-              <input v-model="speed" class="w-1/2 ml-0" type="range" min="0" max="1000" @input="updateSpeed">
-            </div>
-          </div>
-        </div>
+  <div :style="{ backgroundImage: `url(${news.image})` }" class="bg-center bg-cover min-h-screen relative">
+    <!-- オーバーレイ -->
+    <div class="absolute inset-0 bg-black bg-opacity-50" />
+    <!-- タイトル -->
+    <div id="title" class="p-8 z-10 absolute inset-x-0 top-0">
+      <h1 class="text-3xl font-bold text-white mb-4">
+        {{ news.title }}
+      </h1>
+    </div>
+    <!-- フラッシュの表示 -->
+    <div id="flash" class="p-8 z-10 absolute inset-x-0 flex flex-col justify-center h-full">
+      <div class="p-6 mb-8">
+        <span class="block text-center text-white text-5xl mb-4">{{ currentFlash }}</span>
       </div>
+    </div>
+    <!-- その他情報 -->
+    <div id="info" class="p-8 font-semibold text-white text-right absolute inset-x-0 bottom-0 z-10">
+      Link: <a :href="news.url" class="text-blue-500 hover:text-blue-700 underline mb-4">{{ news.source }}</a><br>
+      Author: {{ news.author }}<br>
+      Date: {{ news.published_at }}<br>
     </div>
   </div>
 </template>
