@@ -9,34 +9,21 @@
   </div>
 </template>
 
-
 <script>
 export default {
   name: 'IndexPage',
 
   data() {
     return {
-      newsList: [],
-      sample: null
+      newsList: []
     };
   },
 
   mounted() {
     this.getNewsList();
-    this.getSampleNews();
   },
 
   methods: {
-    getSampleNews() {
-      // ニュースを取得(現在はダミー)
-      this.$axios.get('http://127.0.0.1:8000/get_news/4').then((res) => {
-        this.sample = res.data;
-      }).catch((err) => {
-        console.error(err);
-        alert('Failed to retrieve the data');
-      });
-    },
-
     getNewsList() {
       // ニュースを取得(現在はダミー)
       this.$axios.get('http://127.0.0.1:8000/get_news_list').then((res) => {

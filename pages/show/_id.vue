@@ -5,7 +5,7 @@
     <!-- タイトル -->
     <div id="title" class="p-8 z-10 absolute inset-x-0 top-0">
       <h1 class="text-3xl font-bold text-white mb-4">
-        {{ news.title }}
+        {{ truncatedTitle }}
       </h1>
     </div>
     <!-- フラッシュの表示 -->
@@ -51,6 +51,14 @@ export default {
   computed: {
     currentFlash() {
       return this.news.flash[this.currentIndex]; // 現在のインデックスの文節を返す
+    },
+
+    truncatedTitle() {
+      if (this.news.title && this.news.title.length > 50) {
+        return this.news.title.substring(0, 50) + '…';
+      } else {
+        return this.news.title;
+      }
     }
   },
 
