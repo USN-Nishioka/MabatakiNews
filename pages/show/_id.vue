@@ -126,13 +126,13 @@ export default {
     },
 
     goToPrevNews() {
-      const prevId = parseInt(this.$route.params.id, 10) - 1;
-      this.$router.push(`/show/${prevId}`);
+      const nextId = parseInt(this.$route.params.id, 10) + 1;
+      this.$router.push(`/show/${nextId}`);
     },
 
     goToNextNews() {
-      const nextId = parseInt(this.$route.params.id, 10) + 1;
-      this.$router.push(`/show/${nextId}`);
+      const prevId = parseInt(this.$route.params.id, 10) - 1;
+      this.$router.push(`/show/${prevId}`);
     },
 
     replayNews() {
