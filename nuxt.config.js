@@ -26,7 +26,7 @@ export default {
   head: {
     title: 'MabatakiNews',
     htmlAttrs: {
-      lang: 'en'
+      lang: 'ja'
     },
     meta: [
       { charset: 'utf-8' },
