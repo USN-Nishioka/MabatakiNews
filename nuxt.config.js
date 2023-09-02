@@ -5,7 +5,8 @@ export default {
   },
 
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  // herokuへのSSRデプロイのためにstaticから変更
+  target: 'server',
 
   // github-pagesのための設定
   router: {
