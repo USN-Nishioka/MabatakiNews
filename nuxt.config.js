@@ -1,7 +1,13 @@
 export default {
+  // 環境値
+  env: {
+    getNewsListUrl: process.env.GET_NEWS_LIST_URL || 'http://127.0.0.1:8000/get_news_list',
+    getNewsUrl: process.env.GET_NEWS_URL || 'http://127.0.0.1:8000/get_news',
+  },
+
   // ポート設定.本番環境では `process.env.PORT` を使用し、そうでないなら 3000 となる
   server: {
-    host: '0.0.0.0',
+    host: process.env.HOST || 'localhost',
     port: process.env.PORT || 3000
   },
 
@@ -66,4 +72,4 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
   }
-}
+};

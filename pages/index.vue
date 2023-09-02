@@ -25,9 +25,7 @@ export default {
 
   methods: {
     getNewsList() {
-      // const url = 'http://127.0.0.1:8000/get_news_list'; // for dev
-      const url = 'https://mabataki-server-935f103e61de.herokuapp.com/get_news_list';
-      // ニュースを取得(現在はダミー)
+      const url = process.env.getNewsListUrl;
       this.$axios.get(url).then((res) => {
         this.newsList = res.data;
       }).catch((err) => {

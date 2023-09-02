@@ -94,7 +94,8 @@ export default {
     }, this.speed);
 
     // ニュースを取得
-    this.$axios.get(`http://127.0.0.1:8000/get_news/${this.$route.params.id}`).then((res) => {
+    const url = `${process.env.getNewsUrl}/${this.$route.params.id}`;
+    this.$axios.get(url).then((res) => {
       this.news = res.data;
     }).catch((err) => {
       console.error(err);
