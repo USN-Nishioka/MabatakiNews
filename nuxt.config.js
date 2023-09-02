@@ -15,10 +15,12 @@ export default {
   // herokuへのSSRデプロイのためにstaticから変更
   target: 'server',
 
-  // github-pagesのための設定
+  // 本番環境へのデプロイに伴いコメントアウト
+  /*
   router: {
     base: '/MabatakiNews/' // リポジトリ名に合わせて変更
   },
+   */
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
