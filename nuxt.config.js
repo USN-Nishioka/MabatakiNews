@@ -1,4 +1,9 @@
 export default {
+  // ポート設定.本番環境では `process.env.PORT` を使用し、そうでないなら 3000 となる
+  server: {
+    port: process.env.PORT || 3000
+  },
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
