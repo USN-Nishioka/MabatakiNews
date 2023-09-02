@@ -1,6 +1,7 @@
 export default {
   // ポート設定.本番環境では `process.env.PORT` を使用し、そうでないなら 3000 となる
   server: {
+    host: '0.0.0.0',
     port: process.env.PORT || 3000
   },
 
