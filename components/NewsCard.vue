@@ -1,6 +1,6 @@
 <template>
   <div class="w-full md:w-1/3 px-2">
-    <nuxt-link :to="`/show/${news.id}`">
+    <nuxt-link :to="`/show/${news.id}`" target="_blank">
       <div class="bg-gray-100 mx-auto">
         <div class="max-w-5xl mx-auto p-4">
           <!-- ニュース情報の表示 -->
